@@ -1,0 +1,20 @@
+const image=document.getElementById('cv-image');
+const lang=document.getElementById('lang');
+const download=document.getElementById('download');
+const hint=document.getElementById('hint');
+const year=document.getElementById('year');
+let current='ar';
+year.textContent=new Date().getFullYear();
+lang.addEventListener('click',()=>{
+  current=current==='ar'?'en':'ar';
+  const english=current==='en';
+  document.documentElement.lang=english?'en':'ar';
+  document.documentElement.dir=english?'ltr':'rtl';
+  image.src=english?'cv-en.png':'cv-ar.png';
+  image.alt=english?'CV of Emad Akram Abu Tafsh':'السيرة الذاتية لعماد أكرم أبو طافش';
+  lang.textContent=english?'العربية':'English';
+  download.href=english?'cv-en.pdf':'cv-ar.pdf';
+  download.innerHTML=english?'Download PDF <span aria-hidden="true">↓</span>':'تحميل PDF <span aria-hidden="true">↓</span>';
+  hint.textContent=english?'Exact visual presentation of the original CV. Use the language button to switch.':'عرض مطابق لتصميم ملف السيرة الذاتية الأصلي. استخدم زر اللغة للتبديل.';
+});
+document.getElementById('print').addEventListener('click',()=>window.print());
